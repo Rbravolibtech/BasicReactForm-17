@@ -68,7 +68,7 @@ button {
 	font: inherit;
 	background-color: #240370;
 	color: rgb(4, 229, 245);
-	border: 1px solid #240370;
+	border: 1px solid #1c9e02;
 	padding: 0.5rem 1.5rem;
 	border-radius: 4px;
 	cursor: pointer;
@@ -76,7 +76,7 @@ button {
 
 button:hover,
 button:active {
-	background-color: #33059e;
+	background-color: #118e01;
 	border-color: #33059e;
 }
 
@@ -99,5 +99,15 @@ button:active {
 }
 
 .error-text {
-	color: #b40e0e;
+	color: #fc0000;
+	font-size: xx-large;
+	font-weight: bolder;
+	font-family: monospace;
+}
+
+.nombre {
+	color: rgb(0, 0, 0);
+	font-size: xx-large;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	font-weight: 900;
 }
