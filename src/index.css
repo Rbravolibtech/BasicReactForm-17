@@ -67,17 +67,32 @@ body {
 button {
 	font: inherit;
 	background-color: #240370;
-	color: rgb(4, 229, 245);
+	color: rgb(245, 4, 4);
 	border: 1px solid #1c9e02;
 	padding: 0.5rem 1.5rem;
 	border-radius: 4px;
 	cursor: pointer;
+	border-radius: 20px;
+	border-radius: 15px;
 }
 
 button:hover,
 button:active {
 	background-color: #118e01;
 	border-color: #33059e;
+	border-radius: 20px;
+	border-radius: 15px;
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+	background-color: rgb(4, 167, 42);
+	color: whitesmoke;
+	border-color: rgb(0, 0, 0);
+	cursor: not-allowed;
+	border-radius: 20px;
+	border-radius: 15px;
 }
 
 .form-actions {
@@ -108,6 +123,5 @@ button:active {
 .nombre {
 	color: rgb(0, 0, 0);
 	font-size: xx-large;
-	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-	font-weight: 900;
+	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
