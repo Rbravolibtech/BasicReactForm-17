@@ -1,6 +1,4 @@
-
-
-import useInput from "../Hooks/use-input";
+import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
 	const {
@@ -8,7 +6,7 @@ const SimpleInput = (props) => {
 		isValid: enteredNameIsValid,
 		hasError: nameInputHasError,
 		valueChangeHandler: nameChangedHandler,
-		InputBlueHandler: nameBlurHandler,
+		inputBlurHandler: nameBlurHandler,
 		reset: resetNameInput,
 	} = useInput((value) => value.trim() !== "");
 
@@ -17,7 +15,7 @@ const SimpleInput = (props) => {
 		isValid: enteredEmailIsValid,
 		hasError: emailInputHasError,
 		valueChangeHandler: emailChangeHandler,
-		InputBlurHandler: emailBlurHandler,
+		inputBlurHandler: emailBlurHandler,
 		reset: resetEmailInput,
 	} = useInput((value) => value.includes("@"));
 
@@ -30,18 +28,20 @@ const SimpleInput = (props) => {
 	const formSubmissionHandler = (event) => {
 		event.preventDefault();
 
-		if (enteredName.trim() === "") {
+		if (!enteredNameIsValid) {
 			return;
 		}
 
 		console.log(enteredName);
 
-		// 	nameInputRef.current.value = ""; /////NOT IDEAL DON'T MANIPULATE THE DOM
+		// nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
 		resetNameInput();
-resetEmailInput()
-		
+		resetEmailInput();
+	};
 
-	const nameInputClasses = nameInputHasError ? "form-control" : "form-control";
+	const nameInputClasses = nameInputHasError
+		? "form-control invalid"
+		: "form-control";
 
 	const emailInputClasses = emailInputHasError
 		? "form-control invalid"
@@ -50,9 +50,7 @@ resetEmailInput()
 	return (
 		<form onSubmit={formSubmissionHandler}>
 			<div className={nameInputClasses}>
-				<label className="nombre" htmlFor="name">
-					Your Name
-				</label>
+				<label htmlFor="name">Your Name</label>
 				<input
 					type="text"
 					id="name"
@@ -61,15 +59,11 @@ resetEmailInput()
 					value={enteredName}
 				/>
 				{nameInputHasError && (
-					<p className="error-text">
-						CANNOT LEAVE INPUT EMPTY PLEASE TYPE YOUR NAME!!
-					</p>
+					<p className="error-text">Name must not be empty.</p>
 				)}
 			</div>
 			<div className={emailInputClasses}>
-				<label className="nombre" htmlFor="name">
-					Your E-MAIL
-				</label>
+				<label htmlFor="email">Your E-Mail</label>
 				<input
 					type="email"
 					id="email"
@@ -78,9 +72,7 @@ resetEmailInput()
 					value={enteredEmail}
 				/>
 				{emailInputHasError && (
-					<p className="error-text">
-						CANNOT LEAVE INPUT EMPTY PLEASE ENTER VALID EMAIL 📧!!
-					</p>
+					<p className="error-text">Please enter a valid email.</p>
 				)}
 			</div>
 			<div className="form-actions">
